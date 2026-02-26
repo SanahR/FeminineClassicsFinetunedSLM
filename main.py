@@ -1,3 +1,11 @@
+"""
+Mainstream LLMs cannot, for the life of them, write in convincing Victorian styles, partly due to their being trained on so many modern sources, so I decided,
+as a result of my wish for more classics written by women, to fine-tune a model on all of their nuances. 
+Things to note: 
+Several of the generations seen in the README file were done within the React+Vite+Flask app that I created using the .gguf file from this SLM, not directly in the Colab file. 
+While creating that app, which I'll be putting up on Github soon, I tweaked the prompt and a few other things, so the code shown here may produce slightly different results. 
+"""
+
 #Imports and Other Installations - Take Care of in Separate Cells
 # 1. Install pip upgrade
 !pip install --upgrade pip
