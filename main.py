@@ -118,8 +118,9 @@ class ProgressMonitor(TrainerCallback):
             print(f"\n--- [LITERARY CHECK-IN: STEP {state.global_step}] ---")
             FastLanguageModel.for_inference(model)
             test_prompt = "The drawing room was silent, save for the crackle of the fire and the realization that"
+            #I have since tested out multiple other prompts for this small language model, but for the purpose of something small that runs mostly as a test for the model within Colab, this one works reasonably well. 
             inputs = tokenizer([f"### Instruction:\nCompose a narrative that embodies the wit, social precision, vocabulary, sentence structure, and emotional depth of 19th-century female literary classics, using the styles characterized by ornate vocabulary and winding sentences.  \n\n### Input:\n{test_prompt}\n\n### Response:\n"], return_tensors="pt").to("cuda")
-            outputs = model.generate(**inputs, max_new_tokens=60, temperature=0.8)
+            outputs = model.generate(**inputs, max_new_tokens=60, temperature=0.8) #I often opt for a temperature of 0.8 instead, as older linguistic conventions can be more treacherous for an SLM to navigate
             print(test_prompt,tokenizer.decode(outputs[0], skip_special_tokens=True).split("### Response:\n")[-1])
             print("-" * 50)
             model.train() # Resume learning
